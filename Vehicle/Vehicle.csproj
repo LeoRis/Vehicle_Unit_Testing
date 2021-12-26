@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Boat.cs" />
     <Compile Include="Car.cs" />
+    <Compile Include="DemeritPointsCalculator.cs" />
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="IMutual.cs" />
     <Compile Include="Plane.cs" />

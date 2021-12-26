@@ -54,6 +54,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DemeritPointsCalculatorTests.cs" />
     <Compile Include="FizzBuzzTests.cs" />
     <Compile Include="PlaneTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

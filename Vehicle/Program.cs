@@ -11,6 +11,7 @@ namespace Vehicle
         void Read();
         void Write();
     }
+
     class Program
     {
         static void Main(string[] args)

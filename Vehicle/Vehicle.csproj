@@ -61,6 +61,7 @@
     <Compile Include="DemeritPointsCalculator.cs" />
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="IMutual.cs" />
+    <Compile Include="Mocking\FileReader.cs" />
     <Compile Include="Mocking\VideoService.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Program.cs" />

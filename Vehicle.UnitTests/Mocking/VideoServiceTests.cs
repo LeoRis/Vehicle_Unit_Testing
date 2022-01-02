@@ -34,5 +34,15 @@ namespace Vehicle.UnitTests.Mocking
             // IgnoreCase - ignores case sensitivity
             Assert.That(result, Does.Contain("error").IgnoreCase);
         }
+
+        [Test]
+        public void GetUnprocessedVideosAsCsv_WhenCalled_ReturnEmptyString()
+        {
+            var video = new VideoService();
+
+            var result = video.GetUnprocessedVideosAsCsv();
+
+            Assert.That(result, Is.EqualTo(""));
+        }
     }
 }

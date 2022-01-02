@@ -11,14 +11,16 @@ namespace Vehicle.Mocking
 {
     public class VideoService
     {
-        public IFileReader FileReader { get; set; }
-        public VideoService()
+        private IFileReader _fileReader;
+        public VideoService(IFileReader fileReader = null)
         {
-            FileReader = new FileReader();
+            // If fileReader is not null, we will use it to set _fileReader.
+            // Else, if it's null, we will create new FileReader object.
+            _fileReader = fileReader ?? new FileReader();
         }
         public string ReadVideoTitle()
         {
-            var str = FileReader.Read("video.txt");
+            var str = _fileReader.Read("video.txt");
             var video = JsonConvert.DeserializeObject<Video>(str);
             if (video == null)
             {

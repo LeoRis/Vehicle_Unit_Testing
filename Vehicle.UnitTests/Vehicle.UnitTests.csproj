@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DemeritPointsCalculatorTests.cs" />
-    <Compile Include="FakeFileReader.cs" />
     <Compile Include="FizzBuzzTests.cs" />
     <Compile Include="Mocking\VideoServiceTests.cs" />
     <Compile Include="PlaneTests.cs" />

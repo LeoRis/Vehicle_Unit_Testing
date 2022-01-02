@@ -58,7 +58,6 @@ namespace Vehicle.UnitTests.Mocking
                 new Video {Id = 2},
                 new Video {Id = 3},
             });
-            var video = new VideoService();
 
             var result = _videoService.GetUnprocessedVideosAsCsv();
 

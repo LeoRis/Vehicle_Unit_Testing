@@ -12,17 +12,24 @@ namespace Vehicle.UnitTests.Mocking
     [TestFixture]
     public class VideoServiceTests
     {
+        private Mock<IFileReader> _fileReader;
+        private VideoService _videoService;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _fileReader = new Mock<IFileReader>();
+            _videoService = new VideoService(_fileReader.Object);
+        }
+
         [Test]
         public void ReadVideoTitle_EmptyFile_ReturnError()
         {
-            var fileReader = new Mock<IFileReader>();
-
             // Use Moq only when dealing with external dependencies
-            fileReader.Setup(fr => fr.Read("video.txt")).Returns("");
+            _fileReader.Setup(fr => fr.Read("video.txt")).Returns("");
 
-            var service = new VideoService(fileReader.Object);
 
-            var result = service.ReadVideoTitle();
+            var result = _videoService.ReadVideoTitle();
 
             // IgnoreCase - ignores case sensitivity
             Assert.That(result, Does.Contain("error").IgnoreCase);

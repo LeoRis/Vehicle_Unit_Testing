@@ -8,6 +8,8 @@ using System.Threading;
 using System.Globalization;
 using System.Resources;
 using System.Reflection;
+using System.Data;
+using Dapper;
 
 namespace Vehicle
 {
@@ -32,22 +34,36 @@ namespace Vehicle
             ResourceManager rm = new ResourceManager("Vehicle.Song", Assembly.GetExecutingAssembly());
             Console.OutputEncoding = Encoding.UTF8;
 
-            var type = "cow";
-            var sound = "moo";
+            Dictionary<string, string> myDictionary = new Dictionary<string, string>();
 
-            var enRM = rm.GetString("English").Replace("{0}", type).Replace("{1}", sound);
-            var mkRM = rm.GetString("Macedonian").Replace("{0}", "крава").Replace("{1}", "муу");
-            var deRM = rm.GetString("German").Replace("{0}", type).Replace("{1}", sound);
+            string strSql = "SELECT DISTINCT Type AS [Key],Sound AS [Value] FROM dbo.Type_Sound_Of_Animal";
 
-            Console.WriteLine(enRM);
-            Console.WriteLine();
-            Console.WriteLine(mkRM);
-            Console.WriteLine();
-            Console.WriteLine(deRM);
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnValue("OldM")))
+            {
+                myDictionary = connection.Query<KeyValuePair<string, string>>(strSql).ToDictionary(pair => pair.Key, pair => pair.Value);
+
+                var result = myDictionary;
+            }
+
+            foreach (KeyValuePair<string, string> kvp in myDictionary)
+            {
+                //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            }
+
+            //var type = "cow";
+            //var sound = "moo";
+
+            //var enRM = rm.GetString("English").Replace("{0}", type).Replace("{1}", sound);
+            //var mkRM = rm.GetString("Macedonian").Replace("{0}", "крава").Replace("{1}", "муу");
+            //var deRM = rm.GetString("German").Replace("{0}", type).Replace("{1}", sound);
+
+            //Console.WriteLine(enRM);
+            //Console.WriteLine();
+            //Console.WriteLine(mkRM);
+            //Console.WriteLine();
+            //Console.WriteLine(deRM);
             Console.ReadLine();
-
-            //var service = new VideoService();
-            //var title = service.ReadVideoTitle();
         }
     }
 }

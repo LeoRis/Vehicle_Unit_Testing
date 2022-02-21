@@ -33,7 +33,7 @@ namespace Vehicle
 
             ResourceManager rm = new ResourceManager("Vehicle.Song", Assembly.GetExecutingAssembly());
             Console.OutputEncoding = Encoding.UTF8;
-
+            
             Dictionary<string, string> myDictionary = new Dictionary<string, string>();
 
             string strSql = "SELECT DISTINCT Type AS [Key],Sound AS [Value] FROM dbo.Type_Sound_Of_Animal";
@@ -47,8 +47,9 @@ namespace Vehicle
 
             foreach (KeyValuePair<string, string> kvp in myDictionary)
             {
-                //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                var mkRM = rm.GetString("Macedonian").Replace("{0}", kvp.Key).Replace("{1}", kvp.Value);
+                Console.WriteLine(mkRM);
+                Console.WriteLine();
             }
 
             //var type = "cow";

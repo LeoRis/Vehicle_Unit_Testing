@@ -14,5 +14,9 @@ namespace Vehicle
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
+        internal static string ConnectionValue(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

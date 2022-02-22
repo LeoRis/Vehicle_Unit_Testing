@@ -74,6 +74,7 @@
     <Compile Include="Mocking\VideoRepository.cs" />
     <Compile Include="Mocking\VideoService.cs" />
     <Compile Include="Plane.cs" />
+    <Compile Include="PresentSong.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Song.Designer.cs">
@@ -82,6 +83,7 @@
       <DependentUpon>Song.resx</DependentUpon>
     </Compile>
     <Compile Include="Stack.cs" />
+    <Compile Include="StartMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

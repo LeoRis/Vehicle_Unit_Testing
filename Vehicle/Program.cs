@@ -30,28 +30,6 @@ namespace Vehicle
             //Console.WriteLine();
             //Console.WriteLine(t.FullName);
             //Console.ReadLine();
-
-            ResourceManager rm = new ResourceManager("Vehicle.Song", Assembly.GetExecutingAssembly());
-            Console.OutputEncoding = Encoding.UTF8;
-            
-            Dictionary<string, string> myDictionary = new Dictionary<string, string>();
-
-            string strSql = "SELECT DISTINCT Type AS [Key],Sound AS [Value] FROM dbo.Type_Sound_Of_Animal";
-
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnValue("OldM")))
-            {
-                myDictionary = connection.Query<KeyValuePair<string, string>>(strSql).ToDictionary(pair => pair.Key, pair => pair.Value);
-
-                var result = myDictionary;
-            }
-
-            foreach (KeyValuePair<string, string> kvp in myDictionary)
-            {
-                var mkRM = rm.GetString("Macedonian").Replace("{0}", kvp.Key).Replace("{1}", kvp.Value);
-                Console.WriteLine(mkRM);
-                Console.WriteLine();
-            }
-
             //var type = "cow";
             //var sound = "moo";
 
@@ -64,6 +42,8 @@ namespace Vehicle
             //Console.WriteLine(mkRM);
             //Console.WriteLine();
             //Console.WriteLine(deRM);
+
+            //StartMenu.CreateMenu();
             Console.ReadLine();
         }
     }
